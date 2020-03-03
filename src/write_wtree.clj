@@ -35,6 +35,7 @@
 (defn blob-entry-formatter
   "generates a blob entry for use in a tree"
   [file dir db]
+  (println (.getPath file))
   (ho/write-blob (subs (.getPath file) (count dir)) dir db)
   (ba/concat (.getBytes (str "100644 " (.getName file) "\000")) (from-hex-string (hh/sha1-sum (hh/blob-data file)))))
 
@@ -61,7 +62,7 @@
         sort-files (sort-by #(.getName %) (rest files))
         filter-files (filter #(= level (count (re-seq #"\\" (.getPath %)))) sort-files)
         entries (for [file filter-files] (if (.isDirectory file)
-                                           (when (not= (.getPath file) (str target-dir db))
+                                           (when (not= (.getName file) db)
                                              (tree-entry-formatter (.getName file) (gen-tree (inc level) db target-dir file)))
                                            (blob-entry-formatter file target-dir db)))]
     (generate-tree-entry (vec entries) target-dir db)))
