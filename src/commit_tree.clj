@@ -73,7 +73,7 @@
       (not= m-switch "-m") (println "Error: you must specify a message.")
       (nil? message) (println "Error: you must specify a message with the -m switch.")
       (= p-switch "-p") (cond
-                          (nil? parent-commits) (println "Error: you must specify a commit object with the -p switch")
+                          (nil? parent-commits) (println "Error: you must specify a commit object with the -p switch.")
                           :else (parent-commit-handler message tree-addr parent-commits dir db))
       :else (parent-commit-handler message tree-addr dir db))))
 
