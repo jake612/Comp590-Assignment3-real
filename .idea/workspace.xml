@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ec853efc-8b38-4438-b5c3-a23685db0f85" name="Default Changelist" comment="" />
+    <list default="true" id="ec853efc-8b38-4438-b5c3-a23685db0f85" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idiot/objects/49/cc80b331f1ce513a231fe3039e35fdcdfc6e22" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idiot/objects/4b/825dc642cb6eb9a060e54bf8d69288fbee4904" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hash_object.clj" beforeDir="false" afterPath="$PROJECT_DIR$/src/hash_object.clj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/init.clj" beforeDir="false" afterPath="$PROJECT_DIR$/src/init.clj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/write_wtree.clj" beforeDir="false" afterPath="$PROJECT_DIR$/src/write_wtree.clj" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -36,7 +43,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
-  <component name="ReplState" timestamp="1583205193186">{:repl-history {:ide [], :local [], :remote []}}</component>
+  <component name="ReplState" timestamp="1583205461676">{:repl-history {:ide [], :local [], :remote []}}</component>
   <component name="RunManager">
     <configuration name="REPL" type="ClojureREPL" factoryName="Local" activateToolWindowBeforeRun="false">
       <module name="Comp590-Assignment3" />

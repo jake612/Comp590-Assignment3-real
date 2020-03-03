@@ -9,7 +9,7 @@
 (defn write-object
   [object-bytes dir db]
   (let [address (sha/string object-bytes)
-        path-of-destination-file (str dir db "\\objects\\" (subs address 0 2) "\\" (subs address 2))]
+        path-of-destination-file (str dir db "/objects/" (subs address 0 2) "/" (subs address 2))]
     (when (not (.exists (io/as-file path-of-destination-file)))
       (do (io/make-parents path-of-destination-file)
           (io/copy (ho/zip-str object-bytes) (io/file path-of-destination-file))))
@@ -72,7 +72,7 @@
   (cond
     (> (count args) 0) (println "Error: write-wtree accepts no arguments")
     (not (.isDirectory (io/file dir db))) (println "Error: could not find database. (Did you run `idiot init`?)")
-    :else (->> (io/file dir) (gen-tree (count (re-find (re-pattern "\\\\") dir)) db dir) println)))
+    :else (->> (io/file dir) (gen-tree (count (re-find (re-pattern "/") dir)) db dir) println)))
 
 
 
