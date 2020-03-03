@@ -30,14 +30,10 @@
   [path]
   (let [open #(with-open [input (-> % io/file io/input-stream)]
                 (unzip input))]
-    (open path)))
+    (-> (open path)
+        (map char)
+        (apply str))))
 
-(defn open-file
-  "function which gets the file contents from a hashed object"
-  [path]
-  (-> path
-      unzip
-      bytes->str))
 
 (defn get-address
   "when given a hash and directory, returns the correct address"
