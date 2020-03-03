@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="ec853efc-8b38-4438-b5c3-a23685db0f85" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.nrepl-port" beforeDir="false" afterPath="$PROJECT_DIR$/.nrepl-port" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cat_file.clj" beforeDir="false" afterPath="$PROJECT_DIR$/src/cat_file.clj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/write_wtree.clj" beforeDir="false" afterPath="$PROJECT_DIR$/src/write_wtree.clj" afterDir="false" />
     </list>
@@ -40,7 +41,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
-  <component name="ReplState" timestamp="1583205982791">{:repl-history {:ide [], :local [], :remote []}}</component>
+  <component name="ReplState" timestamp="1583244035043">{:repl-history {:ide [], :local [], :remote []}}</component>
   <component name="RunManager">
     <configuration name="REPL" type="ClojureREPL" factoryName="Local" activateToolWindowBeforeRun="false">
       <module name="Comp590-Assignment3" />

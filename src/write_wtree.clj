@@ -65,6 +65,7 @@
                                            (when (not= (.getName file) db)
                                              (tree-entry-formatter (.getName file) (gen-tree (inc level) db target-dir file)))
                                            (blob-entry-formatter file target-dir db)))]
+    (println (vec files))
     (generate-tree-entry (vec entries) target-dir db)))
 
 (defn write-wtree
