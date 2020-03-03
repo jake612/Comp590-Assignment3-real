@@ -35,7 +35,6 @@
 (defn blob-entry-formatter
   "generates a blob entry for use in a tree"
   [file dir db]
-  (println (.getPath file))
   (ho/write-blob (subs (.getPath file) (count dir)) dir db)
   (ba/concat (.getBytes (str "100644 " (.getName file) "\000")) (from-hex-string (hh/sha1-sum (hh/blob-data file)))))
 
@@ -60,12 +59,11 @@
   [level db target-dir current-dir]
   (let [files (file-seq current-dir)
         sort-files (sort-by #(.getName %) (rest files))
-        filter-files (filter #(= level (count (re-seq #"\\" (.getPath %)))) sort-files)
+        filter-files (filter #(= level (+ (count (re-seq #"\\" (.getPath %))) (count (re-seq #"/" (.getPath %))))) sort-files)
         entries (for [file filter-files] (if (.isDirectory file)
                                            (when (not= (.getName file) db)
                                              (tree-entry-formatter (.getName file) (gen-tree (inc level) db target-dir file)))
                                            (blob-entry-formatter file target-dir db)))]
-    (println (vec files))
     (generate-tree-entry (vec entries) target-dir db)))
 
 (defn write-wtree
@@ -74,7 +72,9 @@
   (cond
     (> (count args) 0) (println "Error: write-wtree accepts no arguments")
     (not (.isDirectory (io/file dir db))) (println "Error: could not find database. (Did you run `idiot init`?)")
-    :else (->> (io/file dir) (gen-tree (count (re-find (re-pattern "/") dir)) db dir) println)))
+    :else (->> (io/file dir)
+               (gen-tree (count (re-find (re-pattern "/") dir)) db dir)
+               println)))
 
 
 
