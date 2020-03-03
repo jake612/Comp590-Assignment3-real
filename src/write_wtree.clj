@@ -40,18 +40,24 @@
 
 (defn tree-entry-formatter
   [name address]
-  (ba/concat (.getBytes (str "40000 " name "\000")) (from-hex-string address)))
+  (if (nil? address)
+    nil
+    (ba/concat (.getBytes (str "40000 " name "\000")) (from-hex-string address))))
+
 
 (defn generate-tree-entry
   "generate tree entry"
   [entries dir db]
-  (let [length (reduce + 0 (map count entries))
-        cat-entries (apply concat entries)
+  (let [filter-nils (filter #(not (nil? %)) entries)
+        length (reduce + 0 (map count filter-nils))
+        cat-entries (apply concat filter-nils)
         object-bytes (-> (str "tree " length "\000")
                          .getBytes
                          (concat cat-entries)
                          byte-array)]
-    (write-object object-bytes dir db)))
+    (if (= (count filter-nils) 0)
+      nil
+      (write-object object-bytes dir db))))
 
 
 (defn gen-tree
@@ -69,12 +75,16 @@
 (defn write-wtree
   "Function handles the write-wtree command"
   [args dir db]
-  (cond
-    (> (count args) 0) (println "Error: write-wtree accepts no arguments")
-    (not (.isDirectory (io/file dir db))) (println "Error: could not find database. (Did you run `idiot init`?)")
-    :else (->> (io/file dir)
-               (gen-tree (count (re-find (re-pattern "/") dir)) db dir)
-               println)))
+  (let [handle-nil #(if (= nil %)
+                      (println "The directory was empty, so nothing was saved.")
+                      (println %))]
+    (cond
+      (> (count args) 0) (println "Error: write-wtree accepts no arguments")
+      (not (.isDirectory (io/file dir db))) (println "Error: could not find database. (Did you run `idiot init`?)")
+      :else (->> (io/file dir)
+                 (gen-tree (count (re-find (re-pattern "/") dir)) db dir)
+                 handle-nil))))
+
 
 
 

@@ -19,7 +19,7 @@
         get-path #(str dir db "/objects/" (subs % 0 2) "/" (subs % 2))]
     (cond
       (not (.isDirectory (io/file dir db))) (println "Error: could not find database. (Did you run `idiot init`?)")
-      (and (not= switch "-p") (not= switch "-t")) (println "Error: the -p or -t switch is required.")
+      (and (not= switch "-p") (not= switch "-t")) (println "Error: the -p or -t switch is required")
       (nil? address) (println "Error: you must specify an address")
       (not (.exists (io/as-file (get-path address)))) (println "Error: that address doesn't exist")
       :else (case switch
