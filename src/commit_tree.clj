@@ -58,7 +58,7 @@
        :else (-> (commits-concat parent-commits)
                  (commit-object author_committer tree-addr message)
                  .getBytes
-                 (wt/write-object db)
+                 (wt/write-object dir db)
                  println)))))
 
 (defn commit-tree

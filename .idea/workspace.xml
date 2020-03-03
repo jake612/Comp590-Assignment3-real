@@ -2,45 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ec853efc-8b38-4438-b5c3-a23685db0f85" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/write_wtree.clj" beforeDir="false" afterPath="$PROJECT_DIR$/src/write_wtree.clj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-dir/.idiot/objects/0a/1f8038e51384bb18888869ab02a95b6eefe6e4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-dir/.idiot/objects/0e/963cfb54b60c4e4efb0fbdeb7ef6296b564ac4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-dir/.idiot/objects/0f/71b443f3fd9f71df7a93be0ecf9a589aaa700b" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-dir/.idiot/objects/0f/b7502def35d9515447ce315725b511ff6738d9" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-dir/.idiot/objects/14/a1e613046a12dcaf2d7557fe9b2c74d71ac12f" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-dir/.idiot/objects/15/357213a3982c1554c8ba43d0d5ac968edcef84" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-dir/.idiot/objects/21/2b52b0dfe9c017b94960e58bdb59d4878e615c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-dir/.idiot/objects/22/14025c2865931c06a116d22347477dbce69235" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-dir/.idiot/objects/24/2578dd0c780472dfba61a2e0750bcc13d061bc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-dir/.idiot/objects/26/607205e1270d9bc09050c4350c5b37bf51db20" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-dir/.idiot/objects/2b/06f9b4390be1c884ffd856b35193a1aaf0a50d" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-dir/.idiot/objects/2c/395f0dffe44f025b267aefba190708c111a714" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-dir/.idiot/objects/31/c12670b2054c6d8a4f750e73e9867ec26cf88b" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-dir/.idiot/objects/33/8e75b9ca4545f0fd4d01224f5a5a6b85dff6d1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-dir/.idiot/objects/3b/a38e772fc3d5aab8be1e33aa921e3b1a5cd0a3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-dir/.idiot/objects/4b/825dc642cb6eb9a060e54bf8d69288fbee4904" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-dir/.idiot/objects/50/b30fa473ae74cecbc1c6655f5a5d97e85d9124" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-dir/.idiot/objects/5d/1b05ce8a5b9bac2878bbde19fb479a5b58b315" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-dir/.idiot/objects/5e/43dcea70ee490295798fe3268fd4779e04eb05" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-dir/.idiot/objects/65/f819c9ea0e26625bd67d58462ee7416bf16ced" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-dir/.idiot/objects/73/d9722677fd198121dc5e9febda44e0e321a2f2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-dir/.idiot/objects/83/d5fc540ae3d79cb97e0a692658d39e6b83ef90" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-dir/.idiot/objects/92/8058c80e43fa7016272ebacbb0912e210d0858" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-dir/.idiot/objects/92/ff713b093e436d7d0930ec3c5e0f84bb6a4070" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-dir/.idiot/objects/94/e98b02f663ba5168326ed9af8145b8076624c2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-dir/.idiot/objects/b3/17fe864a9b96798260f7ab016c6decb71de2b0" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-dir/.idiot/objects/bb/422ea60a9221916b18c4439bb93e5bef883762" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-dir/.idiot/objects/bd/b33444a3b8608312d7731104d154c7e8806a85" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-dir/.idiot/objects/d5/3554bb985a2f6de331d2670596b1df5ad58150" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-dir/.idiot/objects/db/53ede12768db9c4dec97c3777567a82b25bd51" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-dir/.idiot/objects/e6/bd7b65023dbdd33ed9f48e6501e13e17638526" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-dir/.idiot/objects/e6/ce2a6be222e4dc5b9c32fd9f146ebad719f3bd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-dir/.idiot/objects/e7/73405f13a24cb7b5508fca37e5b4e8f0bf1743" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-dir/.idiot/objects/ed/47b663e2302855f9e1ab2bad82ddcfad2a06aa" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-dir/.idiot/objects/ee/428247f05c63bb69027954d31e225c5d48b87b" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-dir/.idiot/objects/f5/4989731f2e1c7a225dcb244b422432d8e7f05b" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-dir/.idiot/objects/f7/c6bd7187521d70c4f0627985095624b8421e6d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/commit_tree.clj" beforeDir="false" afterPath="$PROJECT_DIR$/src/commit_tree.clj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,7 +38,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
-  <component name="ReplState" timestamp="1583248685844">{:repl-history {:ide [], :local [], :remote []}}</component>
+  <component name="ReplState" timestamp="1583248937650">{:repl-history {:ide [], :local [], :remote []}}</component>
   <component name="RunManager">
     <configuration name="REPL" type="ClojureREPL" factoryName="Local" activateToolWindowBeforeRun="false">
       <module name="Comp590-Assignment3" />
