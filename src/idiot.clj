@@ -17,7 +17,7 @@
         handle-r-switch (fn [[targetdir & rargs]] (cond
                                                     (nil? targetdir) (println "Error: the -r switch needs an argument")
                                                     (not (.exists (io/as-file targetdir))) (println "Error: the directory specified by -r does not exist")
-                                                    :else (handle-main-switches rargs (str targetdir "/") db)))
+                                                    :else (handle-main-switches rargs (str targetdir "\\") db)))
         handle-d-switch (fn [[targetdb & rargs]] (cond
                                                     (nil? targetdb) (println "Error: the -d switch needs an argument")
                                                     :else (handle-main-switches rargs dir targetdb)))]
@@ -36,4 +36,4 @@
 (defn -main
   "Main method for handling CLI"
   [& args]
-  (handle-main-switches args "./" ".idiot"))
+  (handle-main-switches args ".\\" ".idiot"))

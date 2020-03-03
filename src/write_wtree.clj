@@ -7,9 +7,9 @@
             [byte-array :as ba]))
 
 (defn write-object
-  [object-bytes db]
+  [object-bytes dir db]
   (let [address (sha/string object-bytes)
-        path-of-destination-file (str db "/objects/" (subs address 0 2) "/" (subs address 2))]
+        path-of-destination-file (str dir db "/objects/" (subs address 0 2) "/" (subs address 2))]
     (when (not (.exists (io/as-file path-of-destination-file)))
       (do (io/make-parents path-of-destination-file)
           (io/copy (ho/zip-str object-bytes) (io/file path-of-destination-file))))
@@ -34,8 +34,8 @@
 
 (defn blob-entry-formatter
   "generates a blob entry for use in a tree"
-  [file db]
-  (ho/write-blob (.getAbsolutePath file) "" db)
+  [file dir db]
+  (ho/write-blob (subs (.getPath file) (count dir)) dir db)
   (ba/concat (.getBytes (str "100644 " (.getName file) "\000")) (from-hex-string (hh/sha1-sum (hh/blob-data file)))))
 
 (defn tree-entry-formatter
@@ -44,26 +44,27 @@
 
 (defn generate-tree-entry
   "generate tree entry"
-  [entries db]
+  [entries dir db]
   (let [length (reduce + 0 (map count entries))
         cat-entries (apply concat entries)
         object-bytes (-> (str "tree " length "\000")
                          .getBytes
                          (concat cat-entries)
                          byte-array)]
-    (write-object object-bytes db)))
+    (write-object object-bytes dir db)))
 
 
 (defn gen-tree
   "Function for recursively generating a tree given a directory"
-  [level db current-dir]
+  [level db target-dir current-dir]
   (let [files (file-seq current-dir)
         sort-files (sort-by #(.getName %) (rest files))
         filter-files (filter #(= level (count (re-seq #"\\" (.getPath %)))) sort-files)
         entries (for [file filter-files] (if (.isDirectory file)
-                                           (tree-entry-formatter (.getName file) (gen-tree (inc level) db file))
-                                           (blob-entry-formatter file db)))]
-    (generate-tree-entry (vec entries) db)))
+                                           (when (not= (.getPath file) (str target-dir db))
+                                             (tree-entry-formatter (.getName file) (gen-tree (inc level) db target-dir file)))
+                                           (blob-entry-formatter file target-dir db)))]
+    (generate-tree-entry (vec entries) target-dir db)))
 
 (defn write-wtree
   "Function handles the write-wtree command"
@@ -71,7 +72,7 @@
   (cond
     (> (count args) 0) (println "Error: write-wtree accepts no arguments")
     (not (.isDirectory (io/file dir db))) (println "Error: could not find database. (Did you run `idiot init`?)")
-    :else (->> (io/file dir) (gen-tree (count (re-find (re-pattern "\\\\") dir)) db) println)))
+    :else (->> (io/file dir) (gen-tree (count (re-find (re-pattern "\\\\") dir)) db dir) println)))
 
 
 
