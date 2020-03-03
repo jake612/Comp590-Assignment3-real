@@ -5,8 +5,7 @@
             [init]
             [help]
             [write-wtree]
-            [commit-tree]
-            [file-io :as fio]))
+            [commit-tree]))
 
 (defn handle-main-switches
   [args dir db]
