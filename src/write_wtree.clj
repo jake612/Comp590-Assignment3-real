@@ -71,7 +71,7 @@
   (cond
     (> (count args) 0) (println "Error: write-wtree accepts no arguments")
     (not (.isDirectory (io/file dir db))) (println "Error: could not find database. (Did you run `idiot init`?)")
-    :else (->> (io/file dir) (gen-tree (count (re-find (re-pattern "\\\\") dir))  db) println)))
+    :else (->> (io/file dir) (gen-tree (count (re-find (re-pattern "\\\\") dir)) db) println)))
 
 
 

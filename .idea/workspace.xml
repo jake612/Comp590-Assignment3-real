@@ -1,8 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="ec853efc-8b38-4438-b5c3-a23685db0f85" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/src/help.clj" beforeDir="false" afterPath="$PROJECT_DIR$/src/help.clj" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DepsProjectDetails">
+    <option name="cachedModuleDetails">
+      <map>
+        <entry key="$PROJECT_DIR$/deps.edn">
+          <value>
+            <ModuleDetails>
+              <option name="details" value="{:paths [&quot;src&quot; &quot;classes&quot; &quot;spec&quot;], :deps {org.clojure/clojure {:mvn/version &quot;1.10.1&quot;}}, :aliases {:deps {:extra-deps {org.clojure/tools.deps.alpha {:mvn/version &quot;0.8.599&quot;}}}, :test {:extra-deps {speclj/speclj {:git/url &quot;https://github.com/kyptin/speclj&quot;, :sha &quot;a843b64cc5a015b8484627eff6e84bbac2712692&quot;}}, :main-opts [&quot;-m&quot; &quot;speclj.cli&quot;]}}, :mvn/repos {&quot;central&quot; {:url &quot;https://repo1.maven.org/maven2/&quot;}, &quot;clojars&quot; {:url &quot;https://repo.clojars.org/&quot;}}, :system-aliases #{:test :deps}, :deps-tree {org.clojure/clojure {:mvn/version &quot;1.10.1&quot;, :deps/manifest :mvn, :paths [&quot;C:\\Users\\Jake612\\.m2\\repository\\org\\clojure\\clojure\\1.10.1\\clojure-1.10.1.jar&quot;], :children (org.clojure/spec.alpha org.clojure/core.specs.alpha)}, speclj/speclj {:git/url &quot;https://github.com/kyptin/speclj&quot;, :sha &quot;a843b64cc5a015b8484627eff6e84bbac2712692&quot;, :deps/manifest :deps, :deps/root &quot;C:\\Users\\Jake612\\.gitlibs\\libs\\speclj\\speclj\\a843b64cc5a015b8484627eff6e84bbac2712692&quot;, :paths [&quot;C:\\Users\\Jake612\\.gitlibs\\libs\\speclj\\speclj\\a843b64cc5a015b8484627eff6e84bbac2712692\\src&quot;], :children (fresh/fresh mmargs/mmargs trptcolin/versioneer)}, org.clojure/spec.alpha {:mvn/version &quot;0.2.176&quot;, :deps/manifest :mvn, :paths [&quot;C:\\Users\\Jake612\\.m2\\repository\\org\\clojure\\spec.alpha\\0.2.176\\spec.alpha-0.2.176.jar&quot;], :dependents [org.clojure/clojure], :children ()}, org.clojure/core.specs.alpha {:mvn/version &quot;0.2.44&quot;, :deps/manifest :mvn, :paths [&quot;C:\\Users\\Jake612\\.m2\\repository\\org\\clojure\\core.specs.alpha\\0.2.44\\core.specs.alpha-0.2.44.jar&quot;], :dependents [org.clojure/clojure], :children ()}, fresh/fresh {:mvn/version &quot;1.1.2&quot;, :deps/manifest :mvn, :paths [&quot;C:\\Users\\Jake612\\.m2\\repository\\fresh\\fresh\\1.1.2\\fresh-1.1.2.jar&quot;], :dependents [speclj/speclj], :children ()}, mmargs/mmargs {:mvn/version &quot;1.2.0&quot;, :deps/manifest :mvn, :paths [&quot;C:\\Users\\Jake612\\.m2\\repository\\mmargs\\mmargs\\1.2.0\\mmargs-1.2.0.jar&quot;], :dependents [speclj/speclj], :children ()}, trptcolin/versioneer {:mvn/version &quot;0.1.1&quot;, :deps/manifest :mvn, :paths [&quot;C:\\Users\\Jake612\\.m2\\repository\\trptcolin\\versioneer\\0.1.1\\versioneer-0.1.1.jar&quot;], :dependents [speclj/speclj], :children ()}}}" />
+              <option name="hash" value="0f3eee24d59420b3a1126a8b7f895303" />
+            </ModuleDetails>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1YbBJZ09x38JWL5XeACbYAWLBiC" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RunManager">
@@ -27,5 +60,17 @@
       <module name="" />
       <method v="2" />
     </configuration>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
   </component>
 </project>
