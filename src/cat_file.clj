@@ -16,7 +16,8 @@
   [args dir db]
   (let [switch (first args)
         address (second args)
-        get-path #(str dir db "/objects/" (subs % 0 2) "/" (subs % 2))]
+        get-path #(str dir db "/objects/" (subs % 0 2) "/" (subs % 2))
+        splitter #(str/split % #"\000")]
     (cond
       (not (.isDirectory (io/file dir db))) (println "Error: could not find database. (Did you run `idiot init`?)")
       (and (not= switch "-p") (not= switch "-t")) (println "Error: the -p or -t switch is required")
@@ -28,7 +29,7 @@
                         fio/unzip
                         (map char)
                         (apply str)
-                        (str/split #"\000")
+                        splitter
                         second
                         print)
               ;"-p" (print (second (str/split (fio/open-file (get-path address)) #"\000")))
