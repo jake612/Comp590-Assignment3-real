@@ -27,7 +27,7 @@
                         get-path
                         fio/unzip
                         (map char)
-                        (apply string)
+                        (apply str)
                         println)
               ;"-p" (print (second (str/split (fio/open-file (get-path address)) #"\000")))
               "-t" (-> address
