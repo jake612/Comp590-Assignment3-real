@@ -23,7 +23,13 @@
       (nil? address) (println "Error: you must specify an address")
       (not (.exists (io/as-file (get-path address)))) (println "Error: that address doesn't exist")
       :else (case switch
-              "-p" (print (second (str/split (fio/open-file (get-path address)) #"\000")))
+              "-p" (->> address
+                        get-path
+                        fio/unzip
+                        (map char)
+                        (apply string)
+                        println)
+              ;"-p" (print (second (str/split (fio/open-file (get-path address)) #"\000")))
               "-t" (-> address
                        (ct/get-object-type dir db)
                        println)))))
