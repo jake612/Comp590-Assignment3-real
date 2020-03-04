@@ -28,7 +28,9 @@
                         fio/unzip
                         (map char)
                         (apply str)
-                        println)
+                        (str/split #"\000")
+                        second
+                        print)
               ;"-p" (print (second (str/split (fio/open-file (get-path address)) #"\000")))
               "-t" (-> address
                        (ct/get-object-type dir db)
