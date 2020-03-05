@@ -2,17 +2,17 @@
   (:require [clojure.java.io :as io]
             [hash-handler :as hh]
             [hash-object :as ho]
-            [clojure.string :as str]
             [git]
-            [byte-array :as ba]))
+            [byte-array :as ba]
+            [sha]))
 
 (defn write-object
   [object-bytes dir db]
   (let [address (sha/string object-bytes)
         path-of-destination-file (str dir db "/objects/" (subs address 0 2) "/" (subs address 2))]
     (when (not (.exists (io/as-file path-of-destination-file)))
-      (do (io/make-parents path-of-destination-file)
-          (io/copy (ho/zip-str object-bytes) (io/file path-of-destination-file))))
+      (io/make-parents path-of-destination-file)
+      (io/copy (ho/zip-str object-bytes) (io/file path-of-destination-file)))
     address))
 
 (defn hex-digits->byte
@@ -44,7 +44,6 @@
     nil
     (ba/concat (.getBytes (str "40000 " name "\000")) (from-hex-string address))))
 
-
 (defn generate-tree-entry
   "generate tree entry"
   [entries dir db]
@@ -58,7 +57,6 @@
     (if (= (count filter-nils) 0)
       nil
       (write-object object-bytes dir db))))
-
 
 (defn gen-tree
   "Function for recursively generating a tree given a directory"

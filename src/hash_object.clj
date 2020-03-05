@@ -26,8 +26,8 @@
         address (hh/sha1-sum header+blob)
         path-of-destination-file (str dir db "/objects/" (subs address 0 2) "/" (subs address 2))]
     (when (not (.exists (io/as-file path-of-destination-file)))
-      (do (io/make-parents path-of-destination-file)
-          (io/copy (zip-str header+blob) (io/file path-of-destination-file))))))
+      (io/make-parents path-of-destination-file)
+      (io/copy (zip-str header+blob) (io/file path-of-destination-file)))))
 
 (defn hash-object
   "main function for handling the hash-object command"

@@ -30,10 +30,9 @@
   [path]
   (let [open #(with-open [input (-> % io/file io/input-stream)]
                 (unzip input))]
-    (-> (open path)
+    (->> (open path)
         (map char)
         (apply str))))
-
 
 (defn get-address
   "when given a hash and directory, returns the correct address"

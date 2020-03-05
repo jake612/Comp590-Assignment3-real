@@ -8,8 +8,7 @@
   [file-path]
   (let [bytes-array (->> file-path
                          fio/unzip
-                         (fio/split-at-byte 0x00))]
-    ))
+                         (fio/split-at-byte 0x00))]))
 
 (defn cat-file
   "function for handling cat-file command"
@@ -24,15 +23,21 @@
       (nil? address) (println "Error: you must specify an address")
       (not (.exists (io/as-file (get-path address)))) (println "Error: that address doesn't exist")
       :else (case switch
-              "-p" (->> address
-                        get-path
-                        fio/unzip
-                        (map char)
-                        (apply str)
-                        splitter
-                        second
-                        print)
-              ;"-p" (print (second (str/split (fio/open-file (get-path address)) #"\000")))
+              "-p" (if (= (ct/get-object-type address dir db) "tree")
+                     (->> address
+                          get-path
+                          fio/unzip
+                          (fio/split-at-byte (byte 0x00))
+                          count
+                          println)
+                     (->> address
+                          get-path
+                          fio/unzip
+                          (map char)
+                          (apply str)
+                          splitter
+                          second
+                          print))
               "-t" (-> address
                        (ct/get-object-type dir db)
                        println)))))

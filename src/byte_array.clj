@@ -11,8 +11,7 @@
 (defn concat
   "Concatenate multiple items into a byte array."
   [& byte-arrays]
-  (byte-array
-    (mapcat cast byte-arrays)))
+  (byte-array (mapcat cast byte-arrays)))
 
 (defn- byte->hex-digits [byte]
   (format "%02x"

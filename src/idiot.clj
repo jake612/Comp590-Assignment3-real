@@ -19,8 +19,8 @@
                                                     (not (.exists (io/as-file targetdir))) (println "Error: the directory specified by -r does not exist")
                                                     :else (handle-main-switches rargs (str targetdir "/") db)))
         handle-d-switch (fn [[targetdb & rargs]] (cond
-                                                    (nil? targetdb) (println "Error: the -d switch needs an argument")
-                                                    :else (handle-main-switches rargs dir targetdb)))]
+                                                   (nil? targetdb) (println "Error: the -d switch needs an argument")
+                                                   :else (handle-main-switches rargs dir targetdb)))]
     (cond
       (= command "-r") (handle-r-switch (rest args))
       (= command "-d") (handle-d-switch (rest args))
