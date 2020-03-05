@@ -4,12 +4,6 @@
             [clojure.string :as str]
             [commit-tree :as ct]))
 
-(defn tree-cat-handler
-  [file-path]
-  (let [bytes-array (->> file-path
-                         fio/unzip
-                         (fio/split-at-byte 0x00))]))
-
 (defn cat-file
   "function for handling cat-file command"
   [args dir db]

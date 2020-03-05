@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ec853efc-8b38-4438-b5c3-a23685db0f85" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/byte_array.clj" beforeDir="false" afterPath="$PROJECT_DIR$/src/byte_array.clj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cat_file.clj" beforeDir="false" afterPath="$PROJECT_DIR$/src/cat_file.clj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/commit_tree.clj" beforeDir="false" afterPath="$PROJECT_DIR$/src/commit_tree.clj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/file_io.clj" beforeDir="false" afterPath="$PROJECT_DIR$/src/file_io.clj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/git.clj" beforeDir="false" afterPath="$PROJECT_DIR$/src/git.clj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hash_object.clj" beforeDir="false" afterPath="$PROJECT_DIR$/src/hash_object.clj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/idiot.clj" beforeDir="false" afterPath="$PROJECT_DIR$/src/idiot.clj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/write_wtree.clj" beforeDir="false" afterPath="$PROJECT_DIR$/src/write_wtree.clj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

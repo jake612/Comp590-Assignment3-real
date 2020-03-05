@@ -43,7 +43,9 @@
          (if (= (count seq) (count evaluation))
            nil
            (->> evaluation count (nth seq) second)))
-       (catch Exception nil)))
+       (catch Exception e
+         e
+         nil)))
 
 (defn parent-commit-handler
   "function takes care of the case where there is a p-switch"
