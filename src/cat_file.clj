@@ -69,6 +69,6 @@
                               (map char)
                               (apply str)
                               print))
-                  "-t" (-> address
-                           (ct/get-object-type dir db)
-                           println)))))
+              "-t" (-> address
+                       (ct/get-object-type dir db)
+                       println)))))
