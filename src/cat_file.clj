@@ -49,10 +49,10 @@
         address (second args)
         get-path #(str dir db "/objects/" (subs % 0 2) "/" (subs % 2))
         get-content-bytes #(->> %
-                               get-path
-                               fio/unzip
-                               (fio/split-at-byte (byte 0x00))
-                               second)]
+                                get-path
+                                fio/unzip
+                                (fio/split-at-byte (byte 0x00))
+                                second)]
 (cond
   (not (.isDirectory (io/file dir db))) (println "Error: could not find database. (Did you run `idiot init`?)")
   (and (not= switch "-p") (not= switch "-t")) (println "Error: the -p or -t switch is required")
