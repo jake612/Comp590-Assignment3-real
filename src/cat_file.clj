@@ -61,14 +61,14 @@
       :else (case switch
               "-p" (if (= (ct/get-object-type address dir db) "tree")
                      (->> address
-                              get-content-bytes
-                              format-tree-output
-                              print)
-                         (->> address
-                              get-content-bytes
-                              (map char)
-                              (apply str)
-                              print))
+                          get-content-bytes
+                          format-tree-output
+                          print)
+                     (->> address
+                          get-content-bytes
+                          (map char)
+                          (apply str)
+                          print))
               "-t" (-> address
                        (ct/get-object-type dir db)
                        println)))))
