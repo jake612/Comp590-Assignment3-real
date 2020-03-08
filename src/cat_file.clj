@@ -53,22 +53,22 @@
                                 fio/unzip
                                 (fio/split-at-byte (byte 0x00))
                                 second)]
-(cond
-  (not (.isDirectory (io/file dir db))) (println "Error: could not find database. (Did you run `idiot init`?)")
-  (and (not= switch "-p") (not= switch "-t")) (println "Error: the -p or -t switch is required")
-  (nil? address) (println "Error: you must specify an address")
-  (not (.exists (io/as-file (get-path address)))) (println "Error: that address doesn't exist")
-  :else (case switch
-          "-p" (if (= (ct/get-object-type address dir db) "tree")
-                 (->> address
-                          get-content-bytes
-                          format-tree-output
-                          print)
+    (cond
+      (not (.isDirectory (io/file dir db))) (println "Error: could not find database. (Did you run `idiot init`?)")
+      (and (not= switch "-p") (not= switch "-t")) (println "Error: the -p or -t switch is required")
+      (nil? address) (println "Error: you must specify an address")
+      (not (.exists (io/as-file (get-path address)))) (println "Error: that address doesn't exist")
+      :else (case switch
+              "-p" (if (= (ct/get-object-type address dir db) "tree")
                      (->> address
-                          get-content-bytes
-                          (map char)
-                          (apply str)
-                          print))
-              "-t" (-> address
-                       (ct/get-object-type dir db)
-                       println)))))
+                              get-content-bytes
+                              format-tree-output
+                              print)
+                         (->> address
+                              get-content-bytes
+                              (map char)
+                              (apply str)
+                              print))
+                  "-t" (-> address
+                           (ct/get-object-type dir db)
+                           println)))))
