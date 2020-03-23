@@ -61,8 +61,7 @@
       :else (-> (commits-concat (take-nth 2 (rest parent-commits)))
                 (commit-object author_committer tree-addr message)
                 .getBytes
-                (wt/write-object dir db)
-                println))))
+                (wt/write-object dir db)))))
 
 (defn commit-tree
   "function for handling commit-tree"
@@ -75,7 +74,7 @@
       (not= (get-object-type tree-addr dir db) "tree") (println "Error: an object exists at that address, but it isn't a tree.")
       (not= m-switch "-m") (println "Error: you must specify a message.")
       (nil? message) (println "Error: you must specify a message with the -m switch.")
-      :else (parent-commit-handler message tree-addr parent-commits dir db))))
+      :else (println (parent-commit-handler message tree-addr parent-commits dir db)))))
 
 
 

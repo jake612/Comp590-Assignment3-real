@@ -14,4 +14,5 @@
     (= "rev-parse" function) (println "idiot rev-parse: determine which commit a ref points to\n\nUsage: idiot rev-parse <ref>\n\n<ref> can be:\n- a branch name, like 'master'\n- literally 'HEAD'\n- literally '@', an alias for 'HEAD'")
     (= "switch" function) (println "Usage: idiot switch [-c] <branch>\n\nArguments:\n   -c   create the branch before switching to it\nOtherwise, if no arguments are given, print \"Error: you must specify a branch name.")
     (= "branch" function) (println "idiot branch: list or delete branches\n\nUsage: idiot branch [-d <branch>]\n\nArguments:\n   -d <branch>   delete branch <branch>")
+    (= "commit" function) (println "idiot commit: create a commit and advance the current branch\n\nUsage: idiot commit <tree> -m \"message\" [(-p parent)...]\n\nArguments:\n   -h               print this message\n   <tree>           the address of the tree object to commit\n   -m \"<message>\"   the commit message\n   -p <parent>      the address of a parent commit")
     :else (println "Error: invalid command")))

@@ -8,7 +8,8 @@
             [commit-tree]
             [rev-parse]
             [switch]
-            [branch]))
+            [branch]
+            [commit]))
 
 (defn handle-main-switches
   [args dir db]
@@ -37,6 +38,7 @@
       (= command "rev-parse") (check-first rev-parse/rev-parse)
       (= command "switch") (check-first switch/switch)
       (= command "branch") (check-first branch/branch)
+      (= command "commit") (check-first commit/commit)
       :else (println "Error: invalid command"))))
 
 (defn -main

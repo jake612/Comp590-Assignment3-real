@@ -38,5 +38,4 @@
     (or (< 2 (count args)) (and (not (= "-c" (first args))) (< 1 (count args)))) (println "Error: you may only specify one branch name.")
     (not (.isDirectory (io/file dir db))) (println "Error: could not find database. (Did you run `idiot init`?)")
     (= "-c" (first args)) (handle-c-switch (second args) dir db)
-    :else (handle-no-switch (first args) dir db)
-    ))
+    :else (handle-no-switch (first args) dir db)))
