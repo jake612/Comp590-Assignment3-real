@@ -9,4 +9,6 @@
     :else (if (.isDirectory (io/file dir db))
             (println (format "Error: %s directory already exists" db))
             (do (io/make-parents (str dir db "/objects/sample.txt"))
+                (io/make-parents (str dir db "/refs/heads/sample.txt"))
+                (spit (str dir db "/HEAD") "ref: refs/heads/master\n")
                 (println (format "Initialized empty Idiot repository in %s directory" db))))))

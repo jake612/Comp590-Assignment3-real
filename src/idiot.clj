@@ -5,7 +5,10 @@
             [init]
             [help]
             [write-wtree]
-            [commit-tree]))
+            [commit-tree]
+            [rev-parse]
+            [switch]
+            [branch]))
 
 (defn handle-main-switches
   [args dir db]
@@ -31,6 +34,9 @@
       (= command "cat-file") (check-first cat-file/cat-file)
       (= command "write-wtree") (check-first write-wtree/write-wtree)
       (= command "commit-tree") (check-first commit-tree/commit-tree)
+      (= command "rev-parse") (check-first rev-parse/rev-parse)
+      (= command "switch") (check-first switch/switch)
+      (= command "branch") (check-first branch/branch)
       :else (println "Error: invalid command"))))
 
 (defn -main
