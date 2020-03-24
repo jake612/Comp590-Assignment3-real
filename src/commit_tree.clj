@@ -74,7 +74,9 @@
       (not= (get-object-type tree-addr dir db) "tree") (println "Error: an object exists at that address, but it isn't a tree.")
       (not= m-switch "-m") (println "Error: you must specify a message.")
       (nil? message) (println "Error: you must specify a message with the -m switch.")
-      :else (println (parent-commit-handler message tree-addr parent-commits dir db)))))
+      :else (let [address (parent-commit-handler message tree-addr parent-commits dir db)]
+              (when (not (nil? address))
+                (println address))))))
 
 
 

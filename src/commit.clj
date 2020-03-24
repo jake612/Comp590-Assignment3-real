@@ -2,7 +2,6 @@
   (:require [clojure.java.io :as io]
             [commit-tree :as ct]
             [rev-parse :as rp]
-            [switch :as sw]
             [branch :as bh]))
 
 (defn handle-commit
