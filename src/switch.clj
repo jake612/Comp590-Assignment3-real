@@ -13,7 +13,7 @@
 (defn write-ref-to-head
   [branch dir db]
   (io/delete-file (head-address dir db))
-  (spit (head-address dir db) (str "ref: " (str "/refs/heads/" branch) "\n")))
+  (spit (head-address dir db) (str "ref: " (str "refs/heads/" branch) "\n")))
 
 (defn handle-c-switch
   [branch dir db]

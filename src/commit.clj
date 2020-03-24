@@ -10,14 +10,15 @@
   (let [head-branch (bh/get-master-name dir db)
         ref-address (str dir db "/refs/heads/" head-branch)
         spit-to-ref #(spit ref-address (str % "\n"))]
-    (println "Commit created")
-    (if (rp/is-ref? (str dir db "/HEAD"))
-      (if (.exists (io/as-file ref-address))
-        (do (io/delete-file ref-address)
-            (spit-to-ref commit-address)
-            (println (str "Updated branch " head-branch ".")))
-        (spit-to-ref commit-address))
-      (spit (str dir db "/HEAD") (str commit-address "\n")))))
+    (when (not (nil? commit-address))
+      (println "Commit created")
+      (if (rp/is-ref? (str dir db "/HEAD"))
+        (if (.exists (io/as-file ref-address))
+          (do (io/delete-file ref-address)
+              (spit-to-ref commit-address)
+              (println (str "Updated branch " head-branch ".")))
+          (spit-to-ref commit-address))
+        (spit (str dir db "/HEAD") (str commit-address "\n"))))))
 
 
 (defn commit

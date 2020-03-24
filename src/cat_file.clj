@@ -21,7 +21,7 @@
         mode (if (= "40000" mode)
                (str "0" mode)
                mode)
-        type (if (= mode "04000")
+        type (if (= mode "040000")
                "tree"
                "blob")]
     (str mode " " type " " address "\t" name "\n")))

@@ -40,6 +40,6 @@
       (not (.isDirectory (io/file dir db))) (println "Error: could not find database. (Did you run `idiot init`?)")
       (or (= branch "HEAD") (= branch "@")) (if (is-ref? head-address)
                                               (print (get-head-ref-address dir db))
-                                              (print (slurp head-address)))
+                                              (println (slurp head-address)))
       (not (.exists (io/as-file ref-address))) (println (str "Error: could not find ref named " branch ".") )
       :else (print (slurp ref-address)))))
