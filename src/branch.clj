@@ -25,9 +25,9 @@
 (defn print-branches
   [dir db]
   (let [names (->> (str dir db "/refs/heads")
-                  io/file
-                  .listFiles
-                  (sort-by #(.getName %)))
+                   io/file
+                   .listFiles
+                   (sort-by #(.getName %)))
         master (get-master-name dir db)]
     (doseq [branch names] (let [name (.getName branch)]
                             (if (= name master)
