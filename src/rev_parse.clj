@@ -41,5 +41,5 @@
       (or (= branch "HEAD") (= branch "@")) (if (is-ref? head-address)
                                               (println (get-head-ref-address dir db))
                                               (print (slurp head-address)))
-      (not (.exists (io/as-file ref-address))) (println (str "Error: could not find ref named " branch ".") )
+      (not (.exists (io/as-file ref-address))) (println (str "Error: could not find ref named " branch "."))
       :else (print (slurp ref-address)))))
