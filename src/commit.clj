@@ -17,7 +17,7 @@
                   (spit-to-ref commit-address))
               (spit-to-ref commit-address))
             (println (str "Updated branch " head-branch ".")))
-        (spit (str dir db "/HEAD") (str commit-address "\n"))))))
+        (spit (str dir db "/HEAD") (str commit-address))))))
 
 (defn commit
   "function for handling commit"
