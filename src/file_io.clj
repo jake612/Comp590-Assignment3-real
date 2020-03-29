@@ -1,6 +1,5 @@
 (ns file-io
-  (:require [clojure.java.io :as io]
-            [clojure.string :as str])
+  (:require [clojure.java.io :as io])
   (:import (java.util.zip InflaterInputStream)
            (java.io ByteArrayOutputStream)))
 
