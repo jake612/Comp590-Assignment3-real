@@ -4,7 +4,8 @@
             [hash-object :as ho]
             [git]
             [byte-array :as ba]
-            [sha]))
+            [sha]
+            [file-io :as fio]))
 
 (defn write-object
   [object-bytes dir db]
@@ -78,7 +79,7 @@
                       (println %))]
     (cond
       (> (count args) 0) (println "Error: write-wtree accepts no arguments")
-      (not (.isDirectory (io/file dir db))) (println "Error: could not find database. (Did you run `idiot init`?)")
+      (fio/check-db-missing dir db) (println "Error: could not find database. (Did you run `idiot init`?)")
       :else (->> (io/file dir)
                  (gen-tree (count (re-find (re-pattern "/") dir)) db dir)
                  handle-nil))))

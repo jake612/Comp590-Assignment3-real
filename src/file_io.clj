@@ -25,22 +25,12 @@
         part2 (nthrest bytes (-> part1 count inc))]
     [part1 part2]))
 
-(defn open-file
-  "function which gets the file contents from a hashed object"
-  [path]
-  (let [open #(with-open [input (-> % io/file io/input-stream)]
-                (unzip input))]
-    (->> (open path)
-         (map char)
-         (apply str))))
+(defn check-db-missing
+  "checks if the given database doesn't exist"
+  [dir db]
+  (-> (io/file dir db)
+      .isDirectory
+      not))
 
-(defn get-address
-  "when given a hash and directory, returns the correct address"
-  [directory hash]
-  (str directory "/objects/" (subs hash 0 2) "/" (subs hash 2)))
 
-(defn check-type
-  "checks type of object"
-  [file-path]
-  (first (str/split (open-file file-path) #" ")))
 

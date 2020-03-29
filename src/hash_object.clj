@@ -1,6 +1,7 @@
 (ns hash-object
   (:require [clojure.java.io :as io])
-  (:require [hash-handler :as hh])
+  (:require [hash-handler :as hh]
+            [file-io :as fio])
   (:import (java.io ByteArrayOutputStream ByteArrayInputStream)
            (java.util.zip DeflaterOutputStream)))
 
@@ -35,7 +36,7 @@
   (let [check-exists #(.exists (io/as-file (str dir %)))]
     (cond
       (or (nil? (first args)) (and (= (first args) "-w") (nil? (second args)))) (println "Error: you must specify a file.")
-      (not (.isDirectory (io/file dir db))) (println "Error: could not find database. (Did you run `idiot init`?)")
+      (fio/check-db-missing dir db) (println "Error: could not find database. (Did you run `idiot init`?)")
       (= (first args) "-w") (if (check-exists (second args))
                               (do (print-address (second args) dir) (write-blob (second args) dir db))
                               (println "Error: that file isn't readable"))

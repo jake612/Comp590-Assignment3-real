@@ -6,18 +6,14 @@
 
 (defn handle-commit
   [commit-address dir db]
-  (let [head-branch (bh/get-master-name dir db)
+  (let [head-branch (bh/get-current-branch-name dir db)
         ref-address (str dir db "/refs/heads/" head-branch)
         spit-to-ref #(spit ref-address (str % "\n"))]
     (when (not (nil? commit-address))
       (println "Commit created.")
-      (if (rp/is-ref? (str dir db "/HEAD"))
-        (do (if (.exists (io/as-file ref-address))
-              (do (io/delete-file ref-address)
-                  (spit-to-ref commit-address))
-              (spit-to-ref commit-address))
-            (println (str "Updated branch " head-branch ".")))
-        "test"))))
+      (when (rp/is-ref? (str dir db "/HEAD"))
+        (spit-to-ref commit-address)
+        (println (str "Updated branch " head-branch "."))))))
 
 (defn commit
   "function for handling commit"

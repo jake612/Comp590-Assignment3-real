@@ -68,7 +68,7 @@
   [args dir db]
   (let [[tree-addr m-switch message & parent-commits] args]
     (cond
-      (not (.isDirectory (io/file dir db))) (println "Error: could not find database. (Did you run `idiot init`?)")
+      (fio/check-db-missing dir db) (println "Error: could not find database. (Did you run `idiot init`?)")
       (nil? tree-addr) (println "Error: you must specify a tree address.")
       (not (.exists (io/as-file (file-path tree-addr dir db)))) (println "Error: no tree object exists at that address.")
       (not= (get-object-type tree-addr dir db) "tree") (println "Error: an object exists at that address, but it isn't a tree.")

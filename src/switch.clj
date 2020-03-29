@@ -1,6 +1,7 @@
 (ns switch
   (:require [clojure.java.io :as io]
-            [rev-parse :as rp]))
+            [rev-parse :as rp]
+            [file-io :as fio]))
 
 (defn refs-address
   [branch dir db]
@@ -12,7 +13,6 @@
 
 (defn write-ref-to-head
   [branch dir db]
-  (io/delete-file (head-address dir db))
   (spit (head-address dir db) (str "ref: " (str "refs/heads/" branch) "\n")))
 
 (defn handle-c-switch
@@ -26,7 +26,10 @@
 
 (defn handle-no-switch
   [branch dir db]
-  (if (not (.exists (io/as-file (refs-address branch dir db))))
+  (if (-> (refs-address branch dir db)
+          io/as-file
+          .exists
+          not)
     (println "Error: no ref with that name exists.")
     (do (write-ref-to-head branch dir db)
         (println (str "Switched to branch '" branch "'")))))
@@ -36,6 +39,6 @@
   (cond
     (or (= 0 (count args)) (and (= "-c" (first args)) (= 1 (count args)))) (println "Error: you must specify a branch name.")
     (or (< 2 (count args)) (and (not (= "-c" (first args))) (< 1 (count args)))) (println "Error: you may only specify one branch name.")
-    (not (.isDirectory (io/file dir db))) (println "Error: could not find database. (Did you run `idiot init`?)")
+    (fio/check-db-missing dir db) (println "Error: could not find database. (Did you run `idiot init`?)")
     (= "-c" (first args)) (handle-c-switch (second args) dir db)
     :else (handle-no-switch (first args) dir db)))

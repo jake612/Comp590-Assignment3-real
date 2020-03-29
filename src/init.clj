@@ -6,9 +6,8 @@
   [args dir db]
   (cond
     (> (count args) 0) (println "Error: init accepts no arguments")
-    :else (if (.isDirectory (io/file dir db))
-            (println (format "Error: %s directory already exists" db))
-            (do (io/make-parents (str dir db "/objects/sample.txt"))
-                (io/make-parents (str dir db "/refs/heads/sample.txt"))
-                (spit (str dir db "/HEAD") "ref: refs/heads/master\n")
-                (println (format "Initialized empty Idiot repository in %s directory" db))))))
+    (.isDirectory (io/file dir db)) (println (format "Error: %s directory already exists" db))
+    :else (do (io/make-parents (str dir db "/objects/sample.txt"))
+              (io/make-parents (str dir db "/refs/heads/sample.txt"))
+              (spit (str dir db "/HEAD") "ref: refs/heads/master\n")
+              (println (format "Initialized empty Idiot repository in %s directory" db)))))
