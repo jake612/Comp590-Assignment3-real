@@ -2,7 +2,8 @@
   (:require [clojure.java.io :as io]
             [file-io :as fio]
             [clojure.string :as str]
-            [commit-tree :as ct]))
+            [commit-tree :as ct]
+            [get_address :as ga]))
 
 (defn to-hex-string
   "Convert the given byte array into a hex string, 2 characters per byte."
@@ -42,29 +43,37 @@
               next-header-bytes (second all-info)]
           (recur (inc n) next-header-bytes (str string (tree-entry-formatter header-bytes address-bytes))))))))
 
+(defn get-content-bytes
+  [path]
+  (->> path
+        fio/unzip
+        (fio/split-at-byte (byte 0x00))
+        second))
+
 (defn cat-file
   "function for handling cat-file command"
   [args dir db]
   (let [switch (first args)
-        address (second args)
-        get-path #(str dir db "/objects/" (subs % 0 2) "/" (subs % 2))
-        get-content-bytes #(->> %
-                                get-path
-                                fio/unzip
-                                (fio/split-at-byte (byte 0x00))
-                                second)]
+        given-addr (second args)
+        info (ga/search-address given-addr dir db)
+        address (second info)
+        matching-addresses (first info)
+        get-path #(str dir db "/objects/" (subs % 0 2) "/" (subs % 2))]
     (cond
       (fio/check-db-missing dir db) (println "Error: could not find database. (Did you run `idiot init`?)")
       (and (not= switch "-p") (not= switch "-t")) (println "Error: the -p or -t switch is required")
-      (nil? address) (println "Error: you must specify an address")
-      (not (.exists (io/as-file (get-path address)))) (println "Error: that address doesn't exist")
+      (nil? given-addr) (println "Error: you must specify an address")
+      (< (count given-addr) 4) (println (format "Error: too few characters specified for address '%s'" given-addr))
+      (not (= 1 matching-addresses)) (ga/addr-loc-error-handler given-addr matching-addresses)
       :else (case switch
               "-p" (if (= (ct/get-object-type address dir db) "tree")
                      (->> address
+                          get-path
                           get-content-bytes
                           format-tree-output
                           print)
                      (->> address
+                          get-path
                           get-content-bytes
                           (map char)
                           (apply str)

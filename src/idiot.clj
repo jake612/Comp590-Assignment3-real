@@ -9,7 +9,9 @@
             [rev-parse]
             [switch]
             [branch]
-            [commit]))
+            [commit]
+            [rev-list]
+            [log]))
 
 (defn handle-main-switches
   [args dir db]
@@ -39,9 +41,12 @@
       (= command "switch") (check-first switch/switch)
       (= command "branch") (check-first branch/branch)
       (= command "commit") (check-first commit/commit)
+      (= command "rev-list") (check-first rev-list/rev-list)
+      (= command "log") (check-first log/log)
       :else (println "Error: invalid command"))))
 
 (defn -main
   "Main method for handling CLI"
   [& args]
   (handle-main-switches args "./" ".idiot"))
+
