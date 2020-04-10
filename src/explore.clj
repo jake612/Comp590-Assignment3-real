@@ -8,7 +8,7 @@
 
 (defn print-server-start
   [port]
-  (println (format "Started server on port %s" port)))
+  (println (format "Started server on port %s." port)))
 
 (defn get-branches-html
   [dir db]
@@ -34,7 +34,7 @@
 (defn handle-switch
   [port dir db]
   (cond
-    (nil? port) (println "Error: you must specify a numeric port with '-p'")
+    (nil? port) (println "Error: you must specify a numeric port with '-p'.")
     (nil? (re-matches #"[0-9]+" port)) (println "Error: the argument for '-p' must be a non-negative integer.")
     :else (start-server (Integer/parseInt port) dir db)))
 

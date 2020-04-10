@@ -2,37 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ec853efc-8b38-4438-b5c3-a23685db0f85" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Deps__clj_stacktrace_0_2_8.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Deps__commons_codec_1_11.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Deps__commons_fileupload_1_4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Deps__commons_io_2_6.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Deps__crypto_equality_1_0_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Deps__crypto_random_1_2_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Deps__hiccup_1_0_5.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Deps__javax_servlet_javax_servlet_api_3_1_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Deps__ns_tracker_0_4_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Deps__org_clojure_java_classpath_0_3_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Deps__org_clojure_tools_namespace_0_2_11.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Deps__org_eclipse_jetty_jetty_http_9_4_22_v20191022.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Deps__org_eclipse_jetty_jetty_io_9_4_22_v20191022.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Deps__org_eclipse_jetty_jetty_server_9_4_22_v20191022.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Deps__org_eclipse_jetty_jetty_util_9_4_22_v20191022.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Deps__ring_1_8_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Deps__ring_ring_codec_1_1_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Deps__ring_ring_core_1_8_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Deps__ring_ring_devel_1_8_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Deps__ring_ring_jetty_adapter_1_8_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Deps__ring_ring_servlet_1_8_0.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.cpcache/E983015276FA27B3F9C75514216D6241.cp" beforeDir="false" afterPath="$PROJECT_DIR$/.cpcache/E983015276FA27B3F9C75514216D6241.cp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.cpcache/E983015276FA27B3F9C75514216D6241.libs" beforeDir="false" afterPath="$PROJECT_DIR$/.cpcache/E983015276FA27B3F9C75514216D6241.libs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.nrepl-port" beforeDir="false" afterPath="$PROJECT_DIR$/.nrepl-port" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Comp590-Assignment3.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Comp590-Assignment3.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/deps.edn" beforeDir="false" afterPath="$PROJECT_DIR$/deps.edn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/explore.clj" beforeDir="false" afterPath="$PROJECT_DIR$/src/explore.clj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/help.clj" beforeDir="false" afterPath="$PROJECT_DIR$/src/help.clj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/idiot.clj" beforeDir="false" afterPath="$PROJECT_DIR$/src/idiot.clj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/log.clj" beforeDir="false" afterPath="$PROJECT_DIR$/src/log.clj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/rev_list.clj" beforeDir="false" afterPath="$PROJECT_DIR$/src/rev_list.clj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -138,10 +111,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="434" y="216" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1585945555213" />
-    <state x="465" y="237" key="com.intellij.ide.util.TipDialog" timestamp="1585941725397">
+    <state x="465" y="237" key="com.intellij.ide.util.TipDialog" timestamp="1586536110872">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="465" y="237" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1585941725397" />
+    <state x="465" y="237" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1586536110872" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
