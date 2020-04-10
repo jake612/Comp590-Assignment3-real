@@ -56,7 +56,7 @@
       (not (= oneline "--oneline")) (println "Error: log requires the --oneline switch")
       (= ref "-n") (switch-handler (first rest) (second rest) dir db)
       (or (nil? ref) (= "@" ref) (= "HEAD" ref)) (log ["--oneline" (-> (str dir db "/HEAD") rp/get-contents-no-nl (str/split #"/") last)] dir db)
-      (not (.exists (io/file dir db "/refs/heads/" ref))) (->> ref (format "Error: could not find ref named %s.") println)
+      (not (.exists (io/file (str dir db "/refs/heads/" ref)))) (->> ref (format "Error: could not find ref named %s.") println)
       :else (try (->> ref
                       (rl/ref-to-chain dir db get-commit-chain-log)
                       (map (fn [tuple] (format-oneline-output (first tuple) (second tuple))))
