@@ -39,7 +39,7 @@
     (nil? number) (println "Error: you must specify a numeric count with '-n'.")
     (->> number (re-matches #"[0-9]+") nil?) (println "Error: the argument for '-n' must be a non-negative integer.")
     (or (nil? ref) (= "@" ref) (= "HEAD" ref)) (switch-handler number (-> (str dir db "/HEAD") rp/get-contents-no-nl (str/split #"/") last) dir db)
-    (not (.exists (io/file dir db "/refs/heads/" ref))) (->> ref (format "Error: could not find ref named %s.") println)
+    (not (.exists (io/file (str dir db "/refs/heads/" ref)))) (->> ref (format "Error: could not find ref named %s.") println)
     :else (try (->> ref
                     (rl/ref-to-chain dir db get-commit-chain-log)
                     (take (Integer/parseInt number))
