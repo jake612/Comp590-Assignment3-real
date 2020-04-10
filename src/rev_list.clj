@@ -32,16 +32,13 @@
         (conj chain-list target-address)))))
 
 (defn ref-to-chain
-  [dir db ref]
+  [dir db get-function ref]
   (->> ref
        (str dir db "/refs/heads/")
        slurp
        butlast
        (reduce str)
-       (get-commit-chain-addresses dir db)
-       (map #(str % "\n"))))
-
-(declare rev-list)
+       (get-function dir db)))
 
 (defn switch-handler
   [number ref dir db]
@@ -50,8 +47,9 @@
     (->> number (re-matches #"[0-9]+") nil?) (println "Error: the argument for '-n' must be a non-negative integer")
     (or (= "@" ref) (= "HEAD" ref)) (switch-handler number (-> (str dir db "/HEAD") rp/get-contents-no-nl (str/split #"/") last) dir db)
     :else (try (->> ref
-                    (ref-to-chain dir db)
+                    (ref-to-chain dir db get-commit-chain-addresses)
                     (take (Integer/parseInt number))
+                    (map #(str % "\n"))
                     (reduce str "")
                     print)
                (catch java.io.FileNotFoundException e (println "Error: that address doesn't exist.") e))))
@@ -64,7 +62,8 @@
       (= ref "-n") (switch-handler (first rest) (second rest) dir db)
       (or (= "@" ref) (= "HEAD" ref)) (rev-list [(-> (str dir db "/HEAD") rp/get-contents-no-nl (str/split #"/") last)] dir db)
       :else (try (->> ref
-                      (ref-to-chain dir db)
+                      (ref-to-chain dir db get-commit-chain-addresses)
+                      (map #(str % "\n"))
                       (reduce str "")
                       print)
                  (catch java.io.FileNotFoundException e (println "Error: that address doesn't exist.") e)))))

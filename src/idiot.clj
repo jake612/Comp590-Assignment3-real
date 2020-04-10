@@ -11,7 +11,8 @@
             [branch]
             [commit]
             [rev-list]
-            [log]))
+            [log]
+            [explore]))
 
 (defn handle-main-switches
   [args dir db]
@@ -43,6 +44,7 @@
       (= command "commit") (check-first commit/commit)
       (= command "rev-list") (check-first rev-list/rev-list)
       (= command "log") (check-first log/log)
+      (= command "explore") (check-first explore/explore)
       :else (println "Error: invalid command"))))
 
 (defn -main
