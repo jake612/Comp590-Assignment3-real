@@ -8,7 +8,7 @@
 
 (defn print-server-start
   [port]
-  (println (format "Started server on port %s." port)))
+  (println (format "Starting server on port %s." port)))
 
 (defn get-branches-html
   [dir db]

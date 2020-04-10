@@ -2,7 +2,8 @@
   (:require [file-io :as fio]
             [rev-parse :as rp]
             [cat-file :as cf]
-            [clojure.string :as str]))
+            [clojure.string :as str]
+            [clojure.java.io :as io]))
 
 (defn object-address
   [dir db address]
@@ -43,9 +44,9 @@
 (defn switch-handler
   [number ref dir db]
   (cond
-    (nil? number) (println "Error: you must specify a numeric count with '-n'")
-    (->> number (re-matches #"[0-9]+") nil?) (println "Error: the argument for '-n' must be a non-negative integer")
-    (or (= "@" ref) (= "HEAD" ref)) (switch-handler number (-> (str dir db "/HEAD") rp/get-contents-no-nl (str/split #"/") last) dir db)
+    (nil? number) (println "Error: you must specify a numeric count with '-n'.")
+    (->> number (re-matches #"[0-9]+") nil?) (println "Error: the argument for '-n' must be a non-negative integer.")
+    (or (nil? ref) (= "@" ref) (= "HEAD" ref)) (switch-handler number (-> (str dir db "/HEAD") rp/get-contents-no-nl (str/split #"/") last) dir db)
     :else (try (->> ref
                     (ref-to-chain dir db get-commit-chain-addresses)
                     (take (Integer/parseInt number))
@@ -60,7 +61,8 @@
     (cond
       (fio/check-db-missing dir db) (println "Error: could not find database. (Did you run `idiot init`?)")
       (= ref "-n") (switch-handler (first rest) (second rest) dir db)
-      (or (= "@" ref) (= "HEAD" ref)) (rev-list [(-> (str dir db "/HEAD") rp/get-contents-no-nl (str/split #"/") last)] dir db)
+      (or (nil? ref) (= "@" ref) (= "HEAD" ref)) (rev-list [(-> (str dir db "/HEAD") rp/get-contents-no-nl (str/split #"/") last)] dir db)
+      (not (.exists (io/file dir db "/refs/heads/" ref))) (->> ref (format "Error: could not find ref named %s.") println)
       :else (try (->> ref
                       (ref-to-chain dir db get-commit-chain-addresses)
                       (map #(str % "\n"))
