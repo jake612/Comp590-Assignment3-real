@@ -1,6 +1,5 @@
 (ns commit-tree
-  (:require [clojure.java.io :as io]
-            [git]
+  (:require [git]
             [write-wtree :as wt]
             [file-io :as fio]
             [get_address :as ga]))
@@ -55,14 +54,15 @@
         address-info (map #(ga/search-address (second %) dir db) commit-pairs)
         com-length (second (which-true #(> (count (second %)) 3) commit-pairs))
         matches (which-true #(= 1 (first %)) address-info)
-        type-eval (second (which-true #(= (get-object-type (second %) dir db) "commit") commit-pairs))
+        type-eval (which-true #(= (get-object-type (second %) dir db) "commit") commit-pairs)
         commits-concat (fn [x] (reduce str "" (map #(str "parent " % "\n") x)))]
+    (println type-eval)
     (cond
       (= (count (last commit-pairs)) 1) (println "Error: you must specify a commit object with the -p switch.")
       (not (nil? com-length)) (println (format "Error: too few characters specified for address '%s'" com-length))
-      (not (nil? matches)) (ga/addr-loc-error-handler (second matches) (first matches) "Error: no tree object exists at that address.")
+      (not (nil? matches)) (ga/addr-loc-error-handler (second matches) (first matches) (format "Error: no commit object exists at address %s." (second matches)))
       (not (nil? type-eval)) (println (format "Error: an object exists at address %s, but it isn't a commit." type-eval))
-      :else (-> (commits-concat (take-nth 2 (rest parent-commits)))
+      :else (-> (commits-concat (map second address-info))
                 (commit-object author_committer tree-addr message)
                 .getBytes
                 (wt/write-object dir db)))))
