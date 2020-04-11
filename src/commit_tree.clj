@@ -59,7 +59,7 @@
     (cond
       (= (count (last commit-pairs)) 1) (println "Error: you must specify a commit object with the -p switch.")
       (not (nil? com-length)) (println (format "Error: too few characters specified for address '%s'" com-length))
-      (not (nil? matches)) (ga/addr-loc-error-handler (second (first matches)) (first (first matches)) (format "Error: no commit object exists at address %s." (->> (second matches) (nth commit-pairs) second)))
+      (not (nil? matches)) (ga/addr-loc-error-handler (->> (second matches) (nth commit-pairs) second) (first (first matches)) (format "Error: no commit object exists at address %s." (->> (second matches) (nth commit-pairs) second)))
       (not (nil? type-eval)) (println (format "Error: an object exists at address %s, but it isn't a commit." (->> (second type-eval) (nth commit-pairs) second)))
       :else (-> (commits-concat (map second address-info))
                 (commit-object author_committer tree-addr message)
