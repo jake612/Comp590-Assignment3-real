@@ -43,7 +43,7 @@
   (try (let [evaluation (take-while func seq)]
          (if (= (count seq) (count evaluation))
            nil
-           (->> evaluation count (nth seq) second)))
+           (->> evaluation count (nth seq))))
        (catch Exception e
          e
          nil)))
@@ -52,12 +52,15 @@
   "function takes care of the case where there is a p-switch"
   [message tree-addr parent-commits dir db]
   (let [commit-pairs (partition-all 2 parent-commits)
-        exists-eval (which-true #(.exists (io/as-file (file-path (second %) dir db))) commit-pairs)
-        type-eval (which-true #(= (get-object-type (second %) dir db) "commit") commit-pairs)
+        address-info (map #(ga/search-address (second %) dir db) commit-pairs)
+        com-length (second (which-true #(> (count (second %)) 3) commit-pairs))
+        matches (which-true #(= 1 (first %)) address-info)
+        type-eval (second (which-true #(= (get-object-type (second %) dir db) "commit") commit-pairs))
         commits-concat (fn [x] (reduce str "" (map #(str "parent " % "\n") x)))]
     (cond
       (= (count (last commit-pairs)) 1) (println "Error: you must specify a commit object with the -p switch.")
-      (not (nil? exists-eval)) (println (format "Error: no commit object exists at address %s." exists-eval))
+      (not (nil? com-length)) (println (format "Error: too few characters specified for address '%s'" com-length))
+      (not (nil? matches)) (ga/addr-loc-error-handler (second matches) (first matches) "Error: no tree object exists at that address.")
       (not (nil? type-eval)) (println (format "Error: an object exists at address %s, but it isn't a commit." type-eval))
       :else (-> (commits-concat (take-nth 2 (rest parent-commits)))
                 (commit-object author_committer tree-addr message)

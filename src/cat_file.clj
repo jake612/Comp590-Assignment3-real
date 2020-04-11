@@ -1,6 +1,5 @@
 (ns cat-file
-  (:require [clojure.java.io :as io]
-            [file-io :as fio]
+  (:require [file-io :as fio]
             [clojure.string :as str]
             [commit-tree :as ct]
             [get_address :as ga]))
@@ -46,9 +45,9 @@
 (defn get-content-bytes
   [path]
   (->> path
-        fio/unzip
-        (fio/split-at-byte (byte 0x00))
-        second))
+       fio/unzip
+       (fio/split-at-byte (byte 0x00))
+       second))
 
 (defn cat-file
   "function for handling cat-file command"

@@ -17,7 +17,6 @@
        (map char)
        (apply str)))
 
-
 (defn get-commit-chain-addresses
   "provides a list of commit chain objects"
   [dir db head-address]

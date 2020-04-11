@@ -12,8 +12,7 @@
              chars-len (count initial-chars)
              matching-files (filter #(= initial-chars (subs % 0 chars-len)) files)]
          [(count matching-files) (str (subs addr 0 2) (first matching-files))])
-       (catch Exception e [0, 0])))
-
+       (catch Exception e e [0, 0])))
 
 (defn addr-loc-error-handler
   [addr len error-msg]

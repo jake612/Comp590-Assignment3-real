@@ -18,10 +18,11 @@
                       (sort-by #(.getName %))
                       (map #(.getName %)))
         add-branch (fn [vector val] (conj vector [:p val]))]
-    (reduce add-branch [:body ] branches)))
+    (reduce add-branch [:body] branches)))
 
 (defn request-handler
   [request dir db]
+  request
   {:status 200
    :headers {"Content-Type" "text/html"}
    :body (html5 [:head [:title "Branches"]] (get-branches-html dir db))})
