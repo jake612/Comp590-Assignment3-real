@@ -2,7 +2,8 @@
   (:require [clojure.java.io :as io]
             [git]
             [write-wtree :as wt]
-            [file-io :as fio]))
+            [file-io :as fio]
+            [get_address :as ga]))
 
 (def author_committer "Linus Torvalds <torvalds@transmeta.com> 1581997446 -0500")
 
@@ -66,15 +67,19 @@
 (defn commit-tree
   "function for handling commit-tree"
   [args dir db]
-  (let [[tree-addr m-switch message & parent-commits] args]
+  (let [[tree-addr m-switch message & parent-commits] args
+        info (ga/search-address tree-addr dir db)
+        address (second info)
+        matching-addresses (first info)]
     (cond
       (fio/check-db-missing dir db) (println "Error: could not find database. (Did you run `idiot init`?)")
       (nil? tree-addr) (println "Error: you must specify a tree address.")
-      (not (.exists (io/as-file (file-path tree-addr dir db)))) (println "Error: no tree object exists at that address.")
-      (not= (get-object-type tree-addr dir db) "tree") (println "Error: an object exists at that address, but it isn't a tree.")
+      (< (count tree-addr) 4) (println (format "Error: too few characters specified for address '%s'" tree-addr))
+      (not (= 1 matching-addresses)) (ga/addr-loc-error-handler tree-addr matching-addresses "Error: no tree object exists at that address.")
+      (not= (get-object-type address dir db) "tree") (println "Error: an object exists at that address, but it isn't a tree.")
       (not= m-switch "-m") (println "Error: you must specify a message.")
       (nil? message) (println "Error: you must specify a message with the -m switch.")
-      :else (let [address (parent-commit-handler message tree-addr parent-commits dir db)]
+      :else (let [address (parent-commit-handler message address parent-commits dir db)]
               (when (not (nil? address))
                 (println address))))))
 

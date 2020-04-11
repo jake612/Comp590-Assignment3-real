@@ -16,9 +16,9 @@
 
 
 (defn addr-loc-error-handler
-  [addr len]
+  [addr len error-msg]
   (if (> len 1)
     (->> addr (format "Error: ambiguous match for address '%s'") println)
-    (println "Error: that address doesn't exist")))
+    (println error-msg)))
 
 
