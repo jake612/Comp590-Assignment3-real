@@ -4,7 +4,6 @@
     <list default="true" id="ec853efc-8b38-4438-b5c3-a23685db0f85" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/commit_tree.clj" beforeDir="false" afterPath="$PROJECT_DIR$/src/commit_tree.clj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/get_address.clj" beforeDir="false" afterPath="$PROJECT_DIR$/src/get_address.clj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,10 +105,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="223" y="68" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1583204238787" />
-    <state x="434" y="216" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1586575654160">
+    <state x="434" y="216" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1586579611818">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="434" y="216" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1586575654160" />
+    <state x="434" y="216" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1586579611818" />
     <state x="465" y="237" key="com.intellij.ide.util.TipDialog" timestamp="1586572204258">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

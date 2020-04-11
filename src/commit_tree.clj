@@ -42,7 +42,7 @@
   (try (let [evaluation (take-while func seq)]
          (if (= (count seq) (count evaluation))
            nil
-           (->> evaluation count (nth seq))))
+           [(->> evaluation count (nth seq)) (count evaluation)]))
        (catch Exception e
          e
          nil)))
@@ -52,15 +52,15 @@
   [message tree-addr parent-commits dir db]
   (let [commit-pairs (partition-all 2 parent-commits)
         address-info (map #(ga/search-address (second %) dir db) commit-pairs)
-        com-length (second (which-true #(> (count (second %)) 3) commit-pairs))
+        com-length (second (first (which-true #(> (count (second %)) 3) commit-pairs)))
         matches (which-true #(= 1 (first %)) address-info)
         type-eval (which-true #(= (get-object-type (second %) dir db) "commit") address-info)
         commits-concat (fn [x] (reduce str "" (map #(str "parent " % "\n") x)))]
     (cond
       (= (count (last commit-pairs)) 1) (println "Error: you must specify a commit object with the -p switch.")
       (not (nil? com-length)) (println (format "Error: too few characters specified for address '%s'" com-length))
-      (not (nil? matches)) (ga/addr-loc-error-handler (second matches) (first matches) (format "Error: no commit object exists at address %s." (second matches)))
-      (not (nil? type-eval)) (println (format "Error: an object exists at address %s, but it isn't a commit." (second matches)))
+      (not (nil? matches)) (ga/addr-loc-error-handler (second (first matches)) (first (first matches)) (format "Error: no commit object exists at address %s." (->> (second matches) (nth commit-pairs) second)))
+      (not (nil? type-eval)) (println (format "Error: an object exists at address %s, but it isn't a commit." (->> (second type-eval) (nth commit-pairs) second)))
       :else (-> (commits-concat (map second address-info))
                 (commit-object author_committer tree-addr message)
                 .getBytes
