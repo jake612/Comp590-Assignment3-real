@@ -2,7 +2,8 @@
   (:require [file-io :as fio]
             [ring.adapter.jetty :refer [run-jetty]]
             [hiccup.page :refer [html5]]
-            [clojure.java.io :as io]))
+            [clojure.java.io :as io]
+            [endpoints :as ep]))
 
 (def default-port 3000)
 
@@ -10,22 +11,15 @@
   [port]
   (println (format "Starting server on port %s." port)))
 
-(defn get-branches-html
-  [dir db]
-  (let [branches (->> (str dir db "/refs/heads")
-                      io/file
-                      .listFiles
-                      (sort-by #(.getName %))
-                      (map #(.getName %)))
-        add-branch (fn [vector val] (conj vector [:p val]))]
-    (reduce add-branch [:body] branches)))
-
 (defn request-handler
   [request dir db]
-  request
-  {:status 200
-   :headers {"Content-Type" "text/html"}
-   :body (html5 [:head [:title "Branches"]] (get-branches-html dir db))})
+  (let [main-body {:status 200 :headers {"Content-Type" "text/html"}}
+        endpoint (:uri request)
+        request-method (:request-method request)
+        add-body #(assoc main-body :body %)]
+    (cond
+      (and (= endpoint "/") (= request-method :get)) (add-body (ep/head-html dir db))
+      :else (add-body (html5 [:head [:title "Error"]] [:p "endpoint not found"])))))
 
 (defn start-server
   [port dir db]
@@ -46,3 +40,5 @@
       (fio/check-db-missing dir db) (println "Error: could not find database. (Did you run `idiot init`?)")
       (= switch "-p") (handle-switch port dir db)
       :else (start-server default-port dir db))))
+
+;:body (html5 [:head [:title "Branches"]] (get-branches-html dir db))
