@@ -22,7 +22,7 @@
 (defn head-html
   [dir db]
   (let [head-ref (-> (-> (str dir db "/HEAD") rp/get-contents-no-nl (str/split #"/") last))
-        head-html [:div {:class "head-info"} "Head points to " [:a {:href (str "/branches/" head-ref)} head-ref]]
+        head-html [:div {:class "head-info"} "Head points to ref " [:a {:href (str "/branches/" head-ref)} head-ref]]
         branches (->> (str dir db "/refs/heads")
                       io/file
                       .listFiles
