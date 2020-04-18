@@ -13,13 +13,11 @@
 
 (defn request-handler
   [request dir db]
-  (let [main-body {:status 200 :headers {"Content-Type" "text/html"}}
-        endpoint (:uri request)
-        request-method (:request-method request)
-        add-body #(assoc main-body :body %)]
+  (let [endpoint (:uri request)
+        request-method (:request-method request)]
     (cond
-      (and (= endpoint "/") (= request-method :get)) (add-body (ep/head-html dir db))
-      :else (add-body (html5 [:head [:title "Error"]] [:p "endpoint not found"])))))
+      (and (= endpoint "/") (= request-method :get)) (ep/head-html dir db)
+      :else {:status 200 :headers {"Content-Type" "text/html"} :body (html5 [:head [:title "None"] [:p "Endpoint not found"]])})))
 
 (defn start-server
   [port dir db]
