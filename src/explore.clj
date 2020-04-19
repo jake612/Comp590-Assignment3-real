@@ -23,7 +23,7 @@
     (case endpoint
       "" (ep/head-html dir db)
       ;"branches" (ep/branch-html info dir db)
-      "commits" (ep/commit-html info dir db)
+      ;"commits" (ep/commit-html info dir db)
       {:status 404})))
 
 (defn start-server
