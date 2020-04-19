@@ -22,8 +22,8 @@
         info (second endpoint-info)]
     (cond
       (= "" endpoint) (ep/head-html dir db)
-      (= "branches" endpoint) (ep/branch-html info dir db)
-      (= "commits" endpoint) (ep/commit-html info dir db)
+      ;(= "branches" endpoint) (ep/branch-html info dir db)
+      ;(= "commits" endpoint) (ep/commit-html info dir db)
       :else {:status 404})))
 
 (defn start-server
