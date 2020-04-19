@@ -22,7 +22,8 @@
         info (second endpoint-info)]
     (case endpoint
       "" (ep/head-html dir db)
-      {:status 200 :headers {"Content-Type" "text/html"} :body (html5 [:head [:title "None"] [:p "Endpoint not found"]])})))
+      "branches" (ep/branch-html info dir db)
+      {:status 404})))
 
 (defn start-server
   [port dir db]
