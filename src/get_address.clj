@@ -10,10 +10,11 @@
                         (map #(.getName %)))
              initial-chars (subs addr 2)
              chars-len (count initial-chars)
-             matching-files (filter #(= initial-chars (subs % 0 chars-len)) files)]
+             matching-files (filter #(= initial-chars (subs % 0 chars-len)) files)
+             mapped-files (map #(str (subs addr 0 2) %) matching-files)]
          (if (= 0 (count matching-files))
            [0 addr]
-           [(count matching-files) (str (subs addr 0 2) (first matching-files))]))
+           [(count matching-files) mapped-files]))
        (catch Exception e e [0, 0])))
 
 (defn addr-loc-error-handler

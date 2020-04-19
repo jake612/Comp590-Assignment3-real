@@ -55,7 +55,7 @@
   (let [switch (first args)
         given-addr (second args)
         info (ga/search-address given-addr dir db)
-        address (second info)
+        address (first (second info))
         matching-addresses (first info)
         get-path #(str dir db "/objects/" (subs % 0 2) "/" (subs % 2))]
     (cond

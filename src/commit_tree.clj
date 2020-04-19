@@ -12,11 +12,12 @@
 
 (defn get-object-type
   [address dir db]
-  (->> (file-path address dir db)
-       fio/unzip
-       (fio/split-at-byte (byte 0x20))
-       first
-       fio/bytes->str))
+  (try (->> (file-path address dir db)
+            fio/unzip
+            (fio/split-at-byte (byte 0x20))
+            first
+            fio/bytes->str)
+       (catch Exception e e nil)))
 
 (defn commit-object
   [commits-str author-str tree-addr message]
@@ -61,7 +62,7 @@
       (not (nil? com-length)) (println (format "Error: too few characters specified for address '%s'" com-length))
       (not (nil? matches)) (ga/addr-loc-error-handler (->> (second matches) (nth commit-pairs) second) (first (first matches)) (format "Error: no commit object exists at address %s." (->> (second matches) (nth commit-pairs) second)))
       (not (nil? type-eval)) (println (format "Error: an object exists at address %s, but it isn't a commit." (->> (second type-eval) (nth commit-pairs) second)))
-      :else (-> (commits-concat (map second address-info))
+      :else (-> (commits-concat (map #(first (second %)) address-info))
                 (commit-object author_committer tree-addr message)
                 .getBytes
                 (wt/write-object dir db)))))
@@ -71,7 +72,7 @@
   [args dir db]
   (let [[tree-addr m-switch message & parent-commits] args
         info (ga/search-address tree-addr dir db)
-        address (second info)
+        address (first (second info))
         matching-addresses (first info)]
     (cond
       (fio/check-db-missing dir db) (println "Error: could not find database. (Did you run `idiot init`?)")
