@@ -3,7 +3,8 @@
             [ring.adapter.jetty :refer [run-jetty]]
             [hiccup.page :refer [html5]]
             [clojure.java.io :as io]
-            [endpoints :as ep]))
+            [endpoints :as ep]
+            [clojure.string :as str]))
 
 (def default-port 3000)
 
@@ -13,11 +14,15 @@
 
 (defn request-handler
   [request dir db]
-  (let [endpoint (:uri request)
-        request-method (:request-method request)]
-    (cond
-      (and (= endpoint "/") (= request-method :get)) (ep/head-html dir db)
-      :else {:status 200 :headers {"Content-Type" "text/html"} :body (html5 [:head [:title "None"] [:p "Endpoint not found"]])})))
+  (let [endpoint-info (-> request
+                          :uri
+                          (subs 1)
+                          (str/split #"/"))
+        endpoint (first endpoint-info)
+        info (second endpoint-info)]
+    (case endpoint
+      "" (ep/head-html dir db)
+      {:status 200 :headers {"Content-Type" "text/html"} :body (html5 [:head [:title "None"] [:p "Endpoint not found"]])})))
 
 (defn start-server
   [port dir db]
