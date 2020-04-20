@@ -64,21 +64,19 @@
       (nil? given-addr) (println "Error: you must specify an address")
       (< (count given-addr) 4) (println (format "Error: too few characters specified for address '%s'" given-addr))
       (not (= 1 matching-addresses))(ga/addr-loc-error-handler given-addr matching-addresses "Error: that address doesn't exist")
-      :else (println info))))
-
-(comment (case switch
-           "-p" (if (= (ct/get-object-type address dir db) "tree")
-                  (->> address
-                       get-path
-                       get-content-bytes
-                       format-tree-output
-                       print)
-                  (->> address
-                       get-path
-                       get-content-bytes
-                       (map char)
-                       (apply str)
-                       print))
-           "-t" (-> address
-                    (ct/get-object-type dir db)
-                    println)))
+      :else (case switch
+              "-p" (if (= (ct/get-object-type address dir db) "tree")
+                     (->> address
+                          get-path
+                          get-content-bytes
+                          format-tree-output
+                          print)
+                     (->> address
+                          get-path
+                          get-content-bytes
+                          (map char)
+                          (apply str)
+                          print))
+              "-t" (-> address
+                       (ct/get-object-type dir db)
+                       println)))))

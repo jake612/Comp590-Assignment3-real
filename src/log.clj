@@ -52,8 +52,8 @@
   [args dir db]
   (let [[oneline ref & rest] args]
     (cond
-      (fio/check-db-missing dir db) (println "Error: could not find database. (Did you run `idiot init`?)")
       (not (= oneline "--oneline")) (println "Error: log requires the --oneline switch")
+      (fio/check-db-missing dir db) (println "Error: could not find database. (Did you run `idiot init`?)")
       (= ref "-n") (switch-handler (first rest) (second rest) dir db)
       (or (nil? ref) (= "@" ref) (= "HEAD" ref)) (log ["--oneline" (-> (str dir db "/HEAD") rp/get-contents-no-nl (str/split #"/") last)] dir db)
       (not (.exists (io/file (str dir db "/refs/heads/" ref)))) (->> ref (format "Error: could not find ref named %s.") println)
