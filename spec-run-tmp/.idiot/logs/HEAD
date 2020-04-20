@@ -1,3 +1,0 @@
-0000000000000000000000000000000000000000 ead2ae448bea9273a38c8673a73426e252e5ad79 Linus Torvalds <torvalds@transmeta.com> 1581997446 -0500	commit (initial): commit message
-ead2ae448bea9273a38c8673a73426e252e5ad79 e319323baaa0b6fbb5d883446bc513ff20ed1e92 Linus Torvalds <torvalds@transmeta.com> 1581997446 -0500	commit: add feature X
-e319323baaa0b6fbb5d883446bc513ff20ed1e92 8430b5667bb562336eadca4d9ce4f0a1ee5487f6 Linus Torvalds <torvalds@transmeta.com> 1581997446 -0500	commit: cause a 3-type collision with prefix 8430

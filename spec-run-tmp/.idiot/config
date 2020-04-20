@@ -1,7 +1,0 @@
-[core]
-	repositoryformatversion = 0
-	filemode = false
-	bare = false
-	logallrefupdates = true
-	worktree = /mnt/c/Users/Jake612/IdeaProjects/Comp590-Assignment3/spec-run-tmp
-	ignorecase = true
