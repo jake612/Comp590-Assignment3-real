@@ -22,8 +22,8 @@
         info (second endpoint-info)]
     (cond
       (= "" endpoint) (ep/head-html dir db)
-      (= "branches" endpoint) (ep/branch-html info dir db)
-      (= "commits" endpoint) (ep/commit-html info dir db)
+      (= "branch" endpoint) (ep/branch-html info dir db)
+      (= "commit" endpoint) (ep/commit-html info dir db)
       :else {:status 200 :headers {"Content-Type" "text/html"} :body (html5 [:p "hello world"])})))
 
 (defn start-server

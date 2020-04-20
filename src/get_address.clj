@@ -15,7 +15,7 @@
          (if (= 0 (count matching-files))
            [0 addr]
            [(count matching-files) mapped-files]))
-       (catch Exception e e [0, 0])))
+       (catch Exception e e [0, nil])))
 
 (defn addr-loc-error-handler
   [addr len error-msg]
