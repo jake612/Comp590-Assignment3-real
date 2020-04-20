@@ -28,7 +28,7 @@
       (nil? tree-addr) (println "Error: you must specify a tree address.")
       (< (count tree-addr) 4) (println (format "Error: too few characters specified for address '%s'" tree-addr))
       (not (= 1 matching-addresses)) (ga/addr-loc-error-handler tree-addr matching-addresses "Error: no tree object exists at that address.")
-      (not= (ct/get-object-type address dir db) "tree") (println "Error: an object exists at that address, but it isn't a tree.")
+      (not= (ct/get-object-type address dir db) "tree") (println (ct/get-object-type address dir db)) ;(println "Error: an object exists at that address, but it isn't a tree.")
       (not= m-switch "-m") (println "Error: you must specify a message.")
       (nil? message) (println "Error: you must specify a message with the -m switch.")
       :else (handle-commit (ct/parent-commit-handler message address parent-commits dir db) dir db))))

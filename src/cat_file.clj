@@ -63,7 +63,7 @@
       (and (not= switch "-p") (not= switch "-t")) (println "Error: the -p or -t switch is required")
       (nil? given-addr) (println "Error: you must specify an address")
       (< (count given-addr) 4) (println (format "Error: too few characters specified for address '%s'" given-addr))
-      (not (= 1 matching-addresses)) (ga/addr-loc-error-handler given-addr matching-addresses "Error: that address doesn't exist")
+      (not (= 1 matching-addresses)) (println info)         ;(ga/addr-loc-error-handler given-addr matching-addresses "Error: that address doesn't exist")
       :else (case switch
               "-p" (if (= (ct/get-object-type address dir db) "tree")
                      (->> address
