@@ -55,7 +55,7 @@
         address-info (map #(ga/search-address (second %) dir db) commit-pairs)
         com-length (second (first (which-true #(> (count (second %)) 3) commit-pairs)))
         matches (which-true #(= 1 (first %)) address-info)
-        type-eval (which-true #(= (get-object-type (second %) dir db) "commit") address-info)
+        type-eval (which-true #(= (get-object-type (second %) dir db) "commit") (second address-info))
         commits-concat (fn [x] (reduce str "" (map #(str "parent " % "\n") x)))]
     (cond
       (= (count (last commit-pairs)) 1) (println "Error: you must specify a commit object with the -p switch.")

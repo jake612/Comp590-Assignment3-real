@@ -21,7 +21,7 @@
   [args dir db]
   (let [[tree-addr m-switch message & parent-commits] args
         info (ga/search-address tree-addr dir db)
-        address (second info)
+        address (first (second info))
         matching-addresses (first info)]
     (cond
       (not (.isDirectory (io/file dir db))) (println "Error: could not find database. (Did you run `idiot init`?)")
