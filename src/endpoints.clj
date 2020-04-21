@@ -35,9 +35,9 @@
                      target-html])}))
 
 (defn commit-body
-  [address dir db]
+  [address full-address dir db]
   (let [file-address #(str dir db "/objects/" (subs % 0 2) "/" (subs % 2))
-        contents (->> address
+        contents (->> full-address
                       file-address
                       cf/get-content-bytes
                       (map char)
@@ -47,7 +47,7 @@
         parents (->> lines
                      (filter #(-> (str/split % #" ") first (= "parent")))
                      (map #(-> (str/split % #" ") second))
-                     (map #(vec [:div [:a {:href (str "/commit/" %)} (str "parent " %)]])))
+                     (map #(vec [:div {:class "parent"} [:a {:href (str "/commit/" %)} (str "parent " %)]])))
         author-pos (->> parents count (+ 1))
         message (->> author-pos
                      (+ 3)
@@ -60,7 +60,7 @@
             parents
             [:div {:class "author"} (->> author-pos (nth lines) format<>)]
             [:div {:class "committer"} (->> author-pos (+ 1) (nth lines) format<>)]
-            [:pre message]])))
+            [:pre {:class "message"} message]])))
 
 (defn commit-html
   [address dir db]
@@ -73,7 +73,7 @@
       (< 1 count-addresses) (duplicate-html target-addresses dir db)
       :else (if (not (= file-type "commit"))
               (redirect file-type full-address)
-              (add-body (commit-body full-address dir db))))))
+              (add-body (commit-body address full-address dir db))))))
 
 (defn branch-html
   [branch dir db]
