@@ -29,6 +29,7 @@
   (let [target-type (map #(vec [% (ct/get-object-type % dir db)]) (second target-info))
         target-html (reduce (fn [html [addr type]] (conj html [:li [:a {:href (str "/" type "/" addr)} addr] (str " (" type ")")])) [:ul {:class "disambiguation-list"}] target-type)]
     {:status 300
+     :headers {"Content-Type" "text/html"}
      :body   (html5 [:head [:title "Multiple Choices"]]
                     [:body
                      [:p "The given address prefix is ambiguous. Please disambiguate your intent by choosing from the following options."]
@@ -65,9 +66,9 @@
 (defn tree-body
   [address full-address dir db]
   (let [contents (->> full-address
-             (get-path dir db)
-             cf/get-content-bytes
-             cf/format-tree-output)
+                      (get-path dir db)
+                      cf/get-content-bytes
+                      cf/format-tree-output)
         lines (str/split contents #"\n")
         formatter (fn [[code type addr name]]
                     (vec [:li
@@ -84,7 +85,6 @@
             [:h1 (str "Tree " address)]
             [:ul {:class "tree-entries"}
              formatted-lines]])))
-
 
 (defn commit-body
   [address full-address dir db]
@@ -142,8 +142,3 @@
         branch-html (reduce add-branch [:ul {:class "branch-list"}] branches)]
     (add-body (html5 [:head [:title "Branches"]] [:body head-html branch-html]))))
 
-(comment
-  (html5 [:head [:title address]]
-         [:body
-          [:h1 (str "Commit " address)]
-          [:div {:class "tree"} [:a {:href full-address} (str "tree " full-address)]]]))

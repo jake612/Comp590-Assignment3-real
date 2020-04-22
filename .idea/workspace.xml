@@ -3,8 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="ec853efc-8b38-4438-b5c3-a23685db0f85" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/setup-explore-test-a6.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cat_file.clj" beforeDir="false" afterPath="$PROJECT_DIR$/src/cat_file.clj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/commit.clj" beforeDir="false" afterPath="$PROJECT_DIR$/src/commit.clj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/commit_tree.clj" beforeDir="false" afterPath="$PROJECT_DIR$/src/commit_tree.clj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/endpoints.clj" beforeDir="false" afterPath="$PROJECT_DIR$/src/endpoints.clj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/explore.clj" beforeDir="false" afterPath="$PROJECT_DIR$/src/explore.clj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jst_explore_test_a6.clj" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -129,7 +134,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/explore.clj</url>
-          <line>40</line>
+          <line>39</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">

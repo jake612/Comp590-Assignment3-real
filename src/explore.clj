@@ -2,7 +2,6 @@
   (:require [file-io :as fio]
             [ring.adapter.jetty :refer [run-jetty]]
             [hiccup.page :refer [html5]]
-            [clojure.java.io :as io]
             [endpoints :as ep]
             [clojure.string :as str]))
 
