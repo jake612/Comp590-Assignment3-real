@@ -23,7 +23,8 @@
     (cond
       (= "" endpoint) (ep/head-html dir db)
       (= "branch" endpoint) (ep/branch-html info dir db)
-      (= "commit" endpoint) (ep/commit-html info dir db)
+      (= "commit" endpoint) (ep/obj-middleware endpoint ep/commit-body info  dir db)
+      (= "tree" endpoint) (ep/obj-middleware endpoint ep/tree-body info dir db)
       :else {:status 200 :headers {"Content-Type" "text/html"} :body (html5 [:p "hello world"])})))
 
 (defn start-server

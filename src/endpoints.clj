@@ -34,11 +34,50 @@
                      [:p "The given address prefix is ambiguous. Please disambiguate your intent by choosing from the following options."]
                      target-html])}))
 
+(defn get-path [dir db address]
+  (str dir db "/objects/" (subs address 0 2) "/" (subs address 2)))
+
+(defn obj-middleware
+  [type func address dir db]
+  (let [target-addresses (ga/search-address address dir db)
+        count-addresses (first target-addresses)
+        full-address (first (second target-addresses))
+        file-type (ct/get-object-type full-address dir db)]
+    (cond
+      (or (< (count address) 4) (= 0 count-addresses)) error-404
+      (< 1 count-addresses) (duplicate-html target-addresses dir db)
+      :else (if (not (= file-type type))
+              (redirect file-type full-address)
+              (add-body (func address full-address dir db))))))
+
+(defn tree-body
+  [address full-address dir db]
+  (let [contents (->> full-address
+             (get-path dir db)
+             cf/get-content-bytes
+             cf/format-tree-output)
+        lines (str/split contents #"\n")
+        formatter (fn [[code type addr name]]
+                    (vec [:li
+                          [:tt
+                           (str code " " type " ")
+                           [:a {:href (str "/" type "/" addr)} addr]
+                           (str " " name)]]))
+        formatted-lines (->> lines
+                             (map #(str/replace % #"\t" " "))
+                             (map #(str/split % #" "))
+                             (map formatter))]
+    (html5 [:head [:title address]]
+           [:body
+            [:h1 (str "Tree " address)]
+            [:ul {:class "tree-entries"}
+             formatted-lines]])))
+
+
 (defn commit-body
   [address full-address dir db]
-  (let [file-address #(str dir db "/objects/" (subs % 0 2) "/" (subs % 2))
-        contents (->> full-address
-                      file-address
+  (let [contents (->> full-address
+                      (get-path dir db)
                       cf/get-content-bytes
                       (map char)
                       (apply str))
@@ -62,18 +101,6 @@
             [:div {:class "committer"} (->> author-pos (+ 1) (nth lines) format<>)]
             [:pre {:class "message"} message]])))
 
-(defn commit-html
-  [address dir db]
-  (let [target-addresses (ga/search-address address dir db)
-        count-addresses (first target-addresses)
-        full-address (first (second target-addresses))
-        file-type (ct/get-object-type full-address dir db)]
-    (cond
-      (or (< (count address) 4) (= 0 count-addresses)) error-404
-      (< 1 count-addresses) (duplicate-html target-addresses dir db)
-      :else (if (not (= file-type "commit"))
-              (redirect file-type full-address)
-              (add-body (commit-body address full-address dir db))))))
 
 (defn branch-html
   [branch dir db]
