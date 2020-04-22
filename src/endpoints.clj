@@ -47,8 +47,20 @@
       (or (< (count address) 4) (= 0 count-addresses)) error-404
       (< 1 count-addresses) (duplicate-html target-addresses dir db)
       :else (if (not (= file-type type))
-              (redirect file-type full-address)
+              (redirect file-type address)
               (add-body (func address full-address dir db))))))
+
+(defn blob-body
+  [address full-address dir db]
+  (let [contents (->> full-address
+                      (get-path dir db)
+                      cf/get-content-bytes
+                      (map char)
+                      (apply str))]
+    (html5 [:head [:title address]]
+           [:body
+            [:h1 (str "Blob " address)]
+            [:pre contents]])))
 
 (defn tree-body
   [address full-address dir db]

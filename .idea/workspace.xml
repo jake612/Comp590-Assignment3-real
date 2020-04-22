@@ -2,36 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ec853efc-8b38-4438-b5c3-a23685db0f85" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.cpcache/E983015276FA27B3F9C75514216D6241.cp" beforeDir="false" afterPath="$PROJECT_DIR$/.cpcache/E983015276FA27B3F9C75514216D6241.cp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.cpcache/E983015276FA27B3F9C75514216D6241.libs" beforeDir="false" afterPath="$PROJECT_DIR$/.cpcache/E983015276FA27B3F9C75514216D6241.libs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Deps__clj_http_3_10_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Deps__clj_tuple_0_2_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Deps__commons_codec_1_12.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Deps__commons_codec_1_11.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Deps__commons_logging_1_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Deps__enlive_1_1_6.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Deps__org_apache_httpcomponents_httpasyncclient_4_1_4.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Deps__org_apache_httpcomponents_httpclient_4_5_8.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Deps__org_apache_httpcomponents_httpclient_cache_4_5_8.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Deps__org_apache_httpcomponents_httpcore_4_4_11.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Deps__org_apache_httpcomponents_httpcore_nio_4_4_10.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Deps__org_apache_httpcomponents_httpmime_4_5_8.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Deps__org_ccil_cowan_tagsoup_tagsoup_1_2_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Deps__org_clojure_core_async_1_1_587.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Deps__org_clojure_core_cache_0_8_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Deps__org_clojure_core_memoize_0_8_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Deps__org_clojure_data_json_1_0_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Deps__org_clojure_data_priority_map_0_0_7.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Deps__org_clojure_tools_analyzer_1_0_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Deps__org_clojure_tools_analyzer_jvm_1_0_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Deps__org_clojure_tools_reader_1_3_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Deps__org_jsoup_jsoup_1_7_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Deps__org_ow2_asm_asm_5_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Deps__potemkin_0_4_5.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Deps__riddley_0_1_12.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Deps__slingshot_0_12_2.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Comp590-Assignment3.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Comp590-Assignment3.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/deps.edn" beforeDir="false" afterPath="$PROJECT_DIR$/deps.edn" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/endpoints.clj" beforeDir="false" afterPath="$PROJECT_DIR$/src/endpoints.clj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/explore.clj" beforeDir="false" afterPath="$PROJECT_DIR$/src/explore.clj" afterDir="false" />
     </list>
@@ -158,7 +129,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/explore.clj</url>
-          <line>39</line>
+          <line>40</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
