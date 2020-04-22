@@ -113,7 +113,6 @@
             [:div {:class "committer"} (->> author-pos (+ 1) (nth lines) format<>)]
             [:pre {:class "message"} message]])))
 
-
 (defn branch-html
   [branch dir db]
   (let [path (str dir db "/refs/heads/" branch)
